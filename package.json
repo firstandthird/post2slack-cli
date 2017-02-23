@@ -7,6 +7,9 @@
     "test": "npm run lint && tape test/*.test.js | tap-spec",
     "lint": "eslint ."
   },
+  "eslintConfig": {
+    "extends": "firstandthird"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/firstandthird/post2slack-cli.git"
