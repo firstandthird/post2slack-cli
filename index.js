@@ -29,6 +29,10 @@ const yargs = require('yargs')
   message: {
     type: 'string'
   },
+  icon_emoji: {
+    type: 'string',
+    default: process.env.SLACK_ICON_EMOJI
+  },
   hook: {
     alias: 'slackHook',
     default: process.env.SLACK_HOOK
