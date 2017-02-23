@@ -1,0 +1,28 @@
+{
+  "name": "post2slack-cli",
+  "version": "1.0.0",
+  "description": "CLI frontend for post2slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && tape test/*.test.js | tap-spec",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/post2slack-cli.git"
+  },
+  "keywords": [],
+  "author": "Greg Allen <code@firstandthird.com> (http://firstandthird.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/post2slack-cli/issues"
+  },
+  "homepage": "https://github.com/firstandthird/post2slack-cli#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-firstandthird": "^3.0.2",
+    "eslint-plugin-import": "^2.1.0"
+  }
+}
