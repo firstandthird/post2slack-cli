@@ -32,6 +32,7 @@ const yargs = require('yargs')
   },
 })
 .demandOption('message', 'You must provide a --message to send to Slack')
+.demandOption('slackHook', 'You must provide a --hook or have defined ENV.SLACK_HOOK')
 .help('h')
 .argv;
 
