@@ -3,24 +3,27 @@ const Post2Slack = require('post2slack');
 const yargs = require('yargs')
 .options({
   additionalFields: {
-    default: [],
-    type: 'array'
+    default: process.env.SLACK_ADDITIONAL_FIELDS || [],
+    type: 'array',
   },
   hideTags: {
-    default: false,
-    type: 'boolean'
+    type: 'boolean',
+    default: process.env.SLACK_HIDE_TAGS || false
   },
   channel: {
-    type: 'string'
+    type: 'string',
+    default: process.env.SLACK_CHANNEL
   },
   iconURL: {
-    type: 'string'
+    type: 'string',
+    default: process.env.SLACK_ICON_URL
   },
   username: {
-    type: 'string'
+    type: 'string',
+    default: process.env.SLACK_USERNAME
   },
   tags: {
-    default: [],
+    default: process.env.SLACK_TAGS || [],
     type: 'array'
   },
   message: {
@@ -32,13 +35,20 @@ const yargs = require('yargs')
   },
 })
 .demandOption('message', 'You must provide a --message to send to Slack')
-.demandOption('slackHook', 'You must provide a --hook or have defined ENV.SLACK_HOOK')
 .help('h')
 .argv;
 
-yargs.slackHook = yargs.hook;
-const post2slack = new Post2Slack(yargs);
-
+const config = {};
+Object.keys(yargs).forEach((key) => {
+  if (yargs[key] !== undefined) {
+    config[key] = yargs[key];
+  }
+});
+config.slackHook = yargs.hook;
+if (!config.slackHook) {
+  throw new Error('You must provide a --hook or set your SLACK_HOOK env variable');
+}
+const post2slack = new Post2Slack(config);
 post2slack.postFormatted(yargs.tags, yargs.message, (err) => {
   if (err) {
     return console.log(err);
