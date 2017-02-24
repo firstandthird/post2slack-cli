@@ -29,7 +29,7 @@ const yargs = require('yargs')
   message: {
     type: 'string'
   },
-  icon_emoji: {
+  iconEmoji: {
     type: 'string',
     default: process.env.SLACK_ICON_EMOJI
   },
