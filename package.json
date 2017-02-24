@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/firstandthird/post2slack-cli#readme",
   "dependencies": {
-    "post2slack": "^1.0.0",
+    "post2slack": "^1.0.2",
     "yargs": "^6.6.0"
   },
   "devDependencies": {
