@@ -1,43 +1,40 @@
+#!/usr/bin/env node
 'use strict';
 const Post2Slack = require('post2slack');
 const yargs = require('yargs')
 .options({
   additionalFields: {
-    default: process.env.SLACK_ADDITIONAL_FIELDS || [],
+    default: [],
     type: 'array',
   },
   hideTags: {
     type: 'boolean',
-    default: process.env.SLACK_HIDE_TAGS || false
+    default: false
   },
   channel: {
-    type: 'string',
-    default: process.env.SLACK_CHANNEL
+    type: 'string'
   },
   iconURL: {
-    type: 'string',
-    default: process.env.SLACK_ICON_URL
+    type: 'string'
   },
   username: {
-    type: 'string',
-    default: process.env.SLACK_USERNAME
+    type: 'string'
   },
   tags: {
-    default: process.env.SLACK_TAGS || [],
+    default: [],
     type: 'array'
   },
   message: {
     type: 'string'
   },
   iconEmoji: {
-    type: 'string',
-    default: process.env.SLACK_ICON_EMOJI
+    type: 'string'
   },
   hook: {
     alias: 'slackHook',
-    default: process.env.SLACK_HOOK
   },
 })
+.env('SLACK_')
 .demandOption('message', 'You must provide a --message to send to Slack')
 .help('h')
 .argv;
