@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "CLI frontend for post2slack",
   "main": "index.js",
+  "bin": {
+    "post2slack": "index.js"
+  },
   "scripts": {
     "test": "npm run lint && tape test/*.test.js | tap-spec",
     "lint": "eslint ."
+  },
+  "eslintConfig": {
+    "extends": "firstandthird"
   },
   "repository": {
     "type": "git",
@@ -19,6 +25,8 @@
   },
   "homepage": "https://github.com/firstandthird/post2slack-cli#readme",
   "dependencies": {
+    "post2slack": "^1.0.0",
+    "yargs": "^6.6.0"
   },
   "devDependencies": {
     "eslint": "^3.9.1",
